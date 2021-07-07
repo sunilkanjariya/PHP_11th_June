@@ -1,45 +1,125 @@
 <?php 
-	/*echo "Hello";
-	echo "Test"; */
+	
+	
+	if (isset($_POST['submit'])) {
+		
+		$name = $_POST['name'];
 
-	// Variables are the names you give to computer memory locations which are used to store values in a computer program.
+		if($name=='') {
+			$error =  "Name Can Not Be Blank";
+		} else {
+			$nameOfUser = $name;
+		}
 
-	// For example, assume you want to store two values 10 and 20 in your program and at a later stage, you want to use these two values. Let's see how you will do it. Here are the following three simple steps −
+	}
+	
 
-	// Create variables with appropriate names.
-	// Store your values in those two variables.
-	// Retrieve and use the stored values from the variables.
+	// $data = array("first_name"=>"sharvan","last_name"=>"kumar");
 
-	require "tesasdt.php";
-	echo $name12_ = "Sharvan";
-	$NAME = "Kumar";
+	// echo $data['first_name'];
+	// echo "<pre>";
 
-	echo $name;
+	// print_r($data);
 
-	echo "<h1>Hello This is Kumar</h1>";
+	// die;
 
-	echo "<br>";
+	// echo "<pre>";
+
+	// print_r($_POST);
+
+	//echo $_POST['name'];
+
+	/*if(isset($_POST['name'])) {
+		echo $_POST['name'];
+	}*/
+	//$nameOfUser = "Sharvan Kumar";
+
+	//echo $nameOfUser;
+
+	//isset(var)
+
+	//echo isset($nameOfUser);
+
+
+
+	// if(isset($nameOfUser)) {
+	// 	echo $nameOfUser;
+	// } else {
+	// 	echo "Value is Not Set";
+	// }
+
+	// $_GET  // Get the value From url => array form 
+
+	// $_GET['name'] // we fetch single value from array
+
+	// $_POST
+
+	// $_POST['name']
+
+	
+	//echo $_GET;
+
+	// echo "<pre>";
+
+	// print_r($_GET);
+
+	//echo $_GET['name'];
+	// if(isset($_GET['name'])) {
+	// 	echo $_GET['name'];
+	// }
+
 ?>
 
-<!-- <a href="test.php">Test Page</a>
-
-<a href="index.php">Home</a> -->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title></title>
 	<style type="text/css">
-		h1 {
-			font-size: <?php echo "50px"; ?>;
+		table tr th,td {
+			padding: 10px;
+		}
+
+		table  {
+			margin: auto;
 		}
 	</style>
 </head>
 <body>
-	<h1><?php echo "Hello This is New Line"; ?></h1>
+	<h1 style="text-align: center; color: blue;">User Details</h1>
+	<form method="post" enctype="multipart/form-data">
+		<table border="1" style="border-collapse:collapse;">
+			<tr>
+				<th>Name</th>
+				<td><input type="text" name="name">
+					<span style="color:red;"><?php if (isset($error)) {
+						echo $error;
+					} ?></span>
+				</td>
+			</tr>
 
-	<a href="<?php echo "https://www.tops-int.com/java-training-course-online/"; ?>"><?php echo "Java"; ?></a>
+			<tr>
+				<th colspan="2"><input type="submit" name="submit"></th>
+			</tr>
+		</table>
+	</form>
+	<?php 
 
-	<h2><?php echo $name; ?></h2>
+		if (isset($nameOfUser)) {
+			?>
+			<h1 style="text-align:center; color: blue;"><?php echo $nameOfUser; ?></h1>
+			<?php
+		}
+
+	?>
+
+	<?php 
+
+		if (isset($nameOfUser)) {
+			echo "<h1 style='text-align:center; color: blue;''>".$nameOfUser."</h1>";
+		}
+
+	?>
+	
 </body>
 </html>
