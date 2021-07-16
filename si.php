@@ -2,13 +2,34 @@
 	
 	if (isset($_POST['submit'])) {
 		
-		$principle = $_POST['Principle'];
-		$roi = $_POST['roi'];
-		$time = $_POST['time'];
+		if($_POST['Principle']=='') {
+				$error1 =  "<span style='color:red;'>Error1</span>";
+		} else {
+			$principle = $_POST['Principle'];	
+		}
 
-		$iAmount = ($principle * $roi * $time)/100;
 
-		$totalAmount = $principle + $iAmount;
+		if($_POST['roi']=='') {
+				$error2 =  "<span style='color:red;'>Error2</span>";
+		} else {
+			$roi = $_POST['roi'];	
+		}
+
+
+		if($_POST['time']=='') {
+				$error3 =  "<span style='color:red;'>Error3</span>";
+		} else {
+			$time = $_POST['time'];	
+		}
+		
+
+		if($_POST['Principle'] != '' && $_POST['roi'] != '' && $_POST['time'] != '') {
+
+			$iAmount = ($principle * $roi * $time)/100;
+
+			$totalAmount = $principle + $iAmount;
+		}
+
 	}
 
 ?>
@@ -28,13 +49,28 @@
 	<form method="post">
 		<label>Principle Amount</label>
 		<input type="text" name="Principle">
+		<?php 
+			if (isset($error1)) {
+				echo $error1;
+			}
+		?>
 		<br><br>
 		<label>ROI</label>
 		<input type="text" name="roi">
+		<?php 
+			if (isset($error2)) {
+				echo $error2;
+			}
+		?>
 		<br><br>
 
 		<label>Time</label>
 		<input type="text" name="time">
+		<?php 
+			if (isset($error3)) {
+				echo $error3;
+			}
+		?>
 		<br><br>
 
 		<input type="submit" name="submit" value="Calculate">
@@ -43,6 +79,8 @@
 	<?php 
 
 		if (isset($_POST['submit'])) {
+
+			if($_POST['Principle'] != '' && $_POST['roi'] != '' && $_POST['time'] != '') {
 	?>
 
 	<table border="1" style="border-collapse:collapse; width: 50%; margin: auto;">
@@ -60,6 +98,7 @@
 	</table>
 	<?php
 		}
+	}
 
 	?>
 </body>
